@@ -15,7 +15,7 @@ Steps to integrate SDK
 
 1. Setup Xlauncher SDK
 
-1.1. Import Xlauncher.framework into project
+        1.1. Import Xlauncher.framework into project
 
 - Drag and drop Xlauncher.framework into your project.
 
@@ -25,7 +25,7 @@ Steps to integrate SDK
 
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
-1.2. Add url schemes
+    1.2. Add url schemes
 
 - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id)
 
@@ -38,7 +38,7 @@ Steps to integrate SDK
 - Add file XlauncherConfig.plist to your root project
 
 
-1.3. Coding
+        1.3. Coding
 
 - Import SDK : #import <XLauncher/XLauncher.h> 
 
