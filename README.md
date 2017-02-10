@@ -117,15 +117,15 @@ Steps to integrate SDK
 
     To implement PED, you create a class that implement PaymentExtraDataProtocol with function
 
-    - (NSString *)getPaymentExtraData { 
+        - (NSString *)getPaymentExtraData { 
 
-    return @“server12-id1001”; // ex: server 12, userid = 1001
+        return @“server12-id1001”; // ex: server 12, userid = 1001
 
-    }
+        }
 
     Then you create an PaymentExtraDataImp object and set it to XLauncher
 
-    [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
+          [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
 
     
 3. Flow
