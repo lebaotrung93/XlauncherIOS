@@ -23,21 +23,20 @@ Steps to integrate SDK
 
 - Embedded Binaries with SDK
 
-<image>
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
 1.2. Add url schemes
 
 - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id)
 
-<image>
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
 
 - Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the config file
 
-<image>
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
 
 - Add file XlauncherConfig.plist to your root project
 
-<image>
 
 1.3. Coding
 
@@ -129,4 +128,12 @@ Steps to integrate SDK
     [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
 
     
-3.
+3. Flow
+
+- Login flow : 
+
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
+
+- Payment flow :
+
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/loginFlow.png)
