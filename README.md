@@ -17,99 +17,99 @@ Steps to integrate SDK
 
         1.1. Import Xlauncher.framework into project
 
-- Drag and drop Xlauncher.framework into your project.
+    - Drag and drop Xlauncher.framework into your project.
 
-- Tick on checkbox: “Copy items into destination group's folder (if needed)”.
+    - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
 
-- Embedded Binaries with SDK
+    - Embedded Binaries with SDK
 
-![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
+    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
-    1.2. Add url schemes
+        1.2. Add url schemes
 
-- Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id)
+    - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id)
 
-![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
+    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
 
-- Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the config file
+    - Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the config file
 
-![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
+     ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
 
-- Add file XlauncherConfig.plist to your root project
+    - Add file XlauncherConfig.plist to your root project
 
 
-        1.3. Coding
+            1.3. Coding
 
-        - Import SDK : #import <XLauncher/XLauncher.h> 
+             - Import SDK : #import <XLauncher/XLauncher.h> 
 
-- Add these lines of code in Application didFinishLaunchingWithOptions function, after window setup and before return line. You can get Google Signin client ID in the config file. 
+    - Add these lines of code in Application didFinishLaunchingWithOptions function, after window setup and before return line. You can get Google Signin client ID in the config file. 
 
-        XLauncher *launcher = [XLauncher getInstance];
+            XLauncher *launcher = [XLauncher getInstance];
 
-        [launcher setupWithWindow:self.window];
+            [launcher setupWithWindow:self.window];
 
-        [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
+            [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
 
-        ...
+            ...
 
-        return YES; 
+            return YES; 
 
-- Add these lines of code in Application didFinishLaunchingWithOptions before return
+    - Add these lines of code in Application didFinishLaunchingWithOptions before return
 
-        NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
+            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
 
-        ATDispatchEvent(Event_AppDidFinishLaunching, dict);
+            ATDispatchEvent(Event_AppDidFinishLaunching, dict);
 
-- Add fucntion handle facebook schemes 
+    - Add fucntion handle facebook schemes 
 
-        - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
-        sourceApplication annotation:(id)annotation { 
-        NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
-        kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
-        ATDispatchEvent(Event_AppOpenUrl, dict); 
-        return YES; }
+            - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
+            sourceApplication annotation:(id)annotation { 
+            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
+            kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
+            ATDispatchEvent(Event_AppOpenUrl, dict); 
+            return YES; }
 
-- This example code is apply for landscape mode. Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function
+    - This example code is apply for landscape mode. Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function
 
-        - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-        { 
+            - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+            { 
 
-        if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
+            if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
 
-        return UIInterfaceOrientationMaskPortrait; 
+            return UIInterfaceOrientationMaskPortrait; 
 
-        } 
+            } 
 
-        else 	return UIInterfaceOrientationMaskLandscape; } 
+            else 	return UIInterfaceOrientationMaskLandscape; } 
 
-- Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
+    - Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 
-        [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
+            [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
 
-        NSString *userID = data[kParamUserID];
+            NSString *userID = data[kParamUserID];
 
-        NSString *userName = data[kParamUserName];
+            NSString *userName = data[kParamUserName];
 
-        NSString *accessToken = data[kParamAccessToken]; 
+            NSString *accessToken = data[kParamAccessToken]; 
 
-        }]; 
+            }]; 
 
-        [launcher handleLogoutWithCompletion:^{ }]; 
+            [launcher handleLogoutWithCompletion:^{ }]; 
 
-- Public functions
+    - Public functions
 
-    Here is the list of public functions you can call to customize the launcher in your game: 
-    - setLauncherStickySide: You can specific the side that launcher can stick to via the or 
-    bitwise. Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
-    - silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
-    * return false if user not logged in yet
+        Here is the list of public functions you can call to customize the launcher in your game: 
+        - setLauncherStickySide: You can specific the side that launcher can stick to via the or 
+        bitwise. Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
+        - silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
+        * return false if user not logged in yet
 
-    * return true if user already logged in, the callback will call later in 
-    - handleLoginWithCompletion function. Keep in mind this process is async, cause we must verify and the get the newest access token from the server. 
-    - showButtonLauncherWithAnimation 
-    - hideButtonLauncherWithAnimation
-    - showLoginScreen: Show the login screen, if user not logged in yet
-    - showPaymentScreen: You may want to show payment screen from your game
+        * return true if user already logged in, the callback will call later in 
+        - handleLoginWithCompletion function. Keep in mind this process is async, cause we must verify and the get the newest access token from the server. 
+        - showButtonLauncherWithAnimation 
+        - hideButtonLauncherWithAnimation
+        - showLoginScreen: Show the login screen, if user not logged in yet
+        - showPaymentScreen: You may want to show payment screen from your game
 
 2. Implement payment extra data
 
