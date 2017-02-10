@@ -13,7 +13,7 @@ Steps to integrate SDK
 
 
 
-1. Setup Appota SDK
+1. Setup Xlauncher SDK
 
 1.1. Import Xlauncher.framework into project
 
