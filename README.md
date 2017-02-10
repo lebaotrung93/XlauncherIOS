@@ -40,61 +40,61 @@ Steps to integrate SDK
 
         1.3. Coding
 
-- Import SDK : #import <XLauncher/XLauncher.h> 
+        - Import SDK : #import <XLauncher/XLauncher.h> 
 
 - Add these lines of code in Application didFinishLaunchingWithOptions function, after window setup and before return line. You can get Google Signin client ID in the config file. 
 
-    XLauncher *launcher = [XLauncher getInstance];
+        XLauncher *launcher = [XLauncher getInstance];
 
-    [launcher setupWithWindow:self.window];
+        [launcher setupWithWindow:self.window];
 
-    [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
+        [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
 
-    ...
+        ...
 
-    return YES; 
+        return YES; 
 
 - Add these lines of code in Application didFinishLaunchingWithOptions before return
 
-    NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
+        NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
 
-    ATDispatchEvent(Event_AppDidFinishLaunching, dict);
+        ATDispatchEvent(Event_AppDidFinishLaunching, dict);
 
 - Add fucntion handle facebook schemes 
 
-    - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
-    sourceApplication annotation:(id)annotation { 
-    NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
-    kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
-    ATDispatchEvent(Event_AppOpenUrl, dict); 
-    return YES; }
+        - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
+        sourceApplication annotation:(id)annotation { 
+        NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
+        kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
+        ATDispatchEvent(Event_AppOpenUrl, dict); 
+        return YES; }
 
 - This example code is apply for landscape mode. Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function
 
-    - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-    { 
+        - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+        { 
 
-    if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
+        if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
 
-    return UIInterfaceOrientationMaskPortrait; 
+        return UIInterfaceOrientationMaskPortrait; 
 
-    } 
+        } 
 
-    else 	return UIInterfaceOrientationMaskLandscape; } 
+        else 	return UIInterfaceOrientationMaskLandscape; } 
 
 - Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 
-    [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
+        [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
 
-    NSString *userID = data[kParamUserID];
+        NSString *userID = data[kParamUserID];
 
-    NSString *userName = data[kParamUserName];
+        NSString *userName = data[kParamUserName];
 
-    NSString *accessToken = data[kParamAccessToken]; 
+        NSString *accessToken = data[kParamAccessToken]; 
 
-    }]; 
+        }]; 
 
-    [launcher handleLogoutWithCompletion:^{ }]; 
+        [launcher handleLogoutWithCompletion:^{ }]; 
 
 - Public functions
 
