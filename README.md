@@ -7,13 +7,9 @@ Steps to integrate SDK
 
 1. Setup Xlauncher SDK
 
-2. Config SDK - Login function
+2. Config SDK - Payment function
 
-3. Config SDK - Payment function
-
-4. Setup SDK variables
-
-5. Xlauncher SDK flow
+3. Xlauncher SDK flow
 
 
 
@@ -101,7 +97,22 @@ Steps to integrate SDK
 
     [launcher handleLogoutWithCompletion:^{ }]; 
 
-- Implement payment extra data
+- Public functions
+
+    Here is the list of public functions you can call to customize the launcher in your game: 
+    - setLauncherStickySide: You can specific the side that launcher can stick to via the or 
+    bitwise. Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
+    - silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
+    * return false if user not logged in yet
+
+    * return true if user already logged in, the callback will call later in 
+    - handleLoginWithCompletion function. Keep in mind this process is async, cause we must verify and the get the newest access token from the server. 
+    - showButtonLauncherWithAnimation 
+    - hideButtonLauncherWithAnimation
+    - showLoginScreen: Show the login screen, if user not logged in yet
+    - showPaymentScreen: You may want to show payment screen from your game
+
+2. Implement payment extra data
 
     Payment extra data(PED) is the data you send to game server when user make payment success. For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
 
@@ -117,19 +128,5 @@ Steps to integrate SDK
 
     [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
 
-- Public functions
-
-    Here is the list of public functions you can call to customize the launcher in your game: 
-    - setLauncherStickySide: You can specific the side that launcher can stick to via the or 
-    bitwise. Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
-    - silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
-    * return false if user not logged in yet
-
-    * return true if user already logged in, the callback will call later in 
-    - handleLoginWithCompletion function. Keep in mind this process is async, cause we must verify and the get the newest access token from the server. 
-    - showButtonLauncherWithAnimation 
-    - hideButtonLauncherWithAnimation
-
-    - showLoginScreen: Show the login screen, if user not logged in yet
-    - showPaymentScreen: You may want to show payment screen from your game
     
+3.
