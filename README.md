@@ -5,11 +5,11 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 Steps to integrate SDK
 
-1. Setup Xlauncher SDK
+    1. Setup Xlauncher SDK
 
-2. Config SDK - Payment function
+    2. Config SDK - Payment function
 
-3. Xlauncher SDK flow
+    3. Xlauncher SDK flow
 
 
 
