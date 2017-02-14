@@ -1,1 +1,17 @@
 Note for Unity implement
+
+	- Guide convert Unity project to IOS :
+
+	- Follow the standard guide.
+
+	- Add these lines of code in StartUnity function After [self createDisplayLink]; Delete it in applicationdidloadfinish(). 
+
+            XLauncher *launcher = [XLauncher getInstance];
+
+            [launcher setupWithWindow:self.window];
+
+            [launcher setDomainDebug:NO]; 
+
+            return YES;
+
+	
