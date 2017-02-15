@@ -38,49 +38,19 @@ Steps to integrate SDK
 
           1.3. Coding
 
-             - Import SDK : #import <XLauncher/XLauncher.h> 
+             - Import SDK : #import <XLauncher/XLauncher.h> into AppDelegate.m
 
-    - Add these lines of code in Application didFinishLaunchingWithOptions function, after window setup and before return line. You can get Google Signin client ID in the config file. 
+    - Add these lines of code in Application didFinishLaunchingWithOptions function in AppDelegate class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 
+            (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+            // Project configure
+    
             XLauncher *launcher = [XLauncher getInstance];
-
+    
             [launcher setupWithWindow:self.window];
-
-            [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
-
-            ...
-
-            return YES; 
-
-    - Add these lines of code in Application didFinishLaunchingWithOptions before return
-
-            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
-
-            ATDispatchEvent(Event_AppDidFinishLaunching, dict);
-
-    - Add fucntion handle facebook schemes 
-
-            - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
-            sourceApplication annotation:(id)annotation { 
-            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
-            kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
-            ATDispatchEvent(Event_AppOpenUrl, dict); 
-            return YES; }
-
-    - This example code is apply for landscape mode. Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function
-
-            - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
-            { 
-
-            if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
-
-            return UIInterfaceOrientationMaskPortrait; 
-
-            } 
-
-            else 	return UIInterfaceOrientationMaskLandscape; } 
-
-    - Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
+            
+            // Handle login callback
 
             [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
 
@@ -91,19 +61,67 @@ Steps to integrate SDK
             NSString *accessToken = data[kParamAccessToken]; 
 
             }]; 
+            
+            // Handle logout callback
 
-            [launcher handleLogoutWithCompletion:^{ }]; 
+            [launcher handleLogoutWithCompletion:^{ }];
+    
+            [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
+
+            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
+
+            ATDispatchEvent(Event_AppDidFinishLaunching, dict);    
+
+            return YES;
+            }
+            
+    - Add function handle Facebook schemes 
+
+            - (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)
+            sourceApplication annotation:(id)annotation { 
+
+            NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamUrl: ATNonNilObject(url), 
+            kParamSourceApplication: ATNonNilObject(sourceApplication), kParamAnnotation: ATNonNilObject(annotation)}; 
+
+            ATDispatchEvent(Event_AppOpenUrl, dict); 
+
+            return YES; 
+            }
+
+    - This example code is apply for landscape mode. Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function
+
+            - (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+            { 
+
+            if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
+
+            return UIInterfaceOrientationMaskPortrait; 
+
+            } else 	
+            
+            return UIInterfaceOrientationMaskLandscape; 
+            
+            } 
+
 
     - Public functions
 
-        Here is the list of public functions you can call to customize the launcher in your game: 
+        Here is the list of public functions you can call to customize the Xlauncher in your game: 
         - setLauncherStickySide: You can specific the side that launcher can stick to via the or 
         bitwise. Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
         - silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
-        * return false if user not logged in yet
-
-        * return true if user already logged in, the callback will call later in 
-        - handleLoginWithCompletion function. Keep in mind this process is async, cause we must verify and the get the newest access token from the server. 
+        
+                if([[Xlauncher getInstance] silentLogin])
+                
+                    // Move direct to game
+                        
+                else {
+                
+                    // Show login screen
+                    
+                    [[Xlauncher getInstance] showLoginScreen];
+            
+                }
         - showButtonLauncherWithAnimation 
         - hideButtonLauncherWithAnimation
         - showLoginScreen: Show the login screen, if user not logged in yet
@@ -111,7 +129,12 @@ Steps to integrate SDK
 
 2. Implement payment extra data
 
-    Payment extra data(PED) is the data you send to game server when user make payment success. For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
+    Payment extra data (PED) is the data you send to game server when user make payment success. For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
+    
+    Note*: 
+    It must be unique string
+    Maximum is 50 characters
+    There's no special character in string
 
     To implement PED, you create a class that implement PaymentExtraDataProtocol with function
 
