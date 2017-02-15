@@ -152,9 +152,7 @@ Steps to integrate SDK
 3. Flow
 
 - Login flow : 
-
-![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/loginFlow.png)
 
 - Payment flow :
-
-![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/loginFlow.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
