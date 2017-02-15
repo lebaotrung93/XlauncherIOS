@@ -5,15 +5,20 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 Steps to integrate SDK
 
-    1. Setup Xlauncher SDK
+    1. Convert Unity to IOS game/application.
 
-    2. Config SDK - Payment function
+    2. Setup Xlauncher SDK
 
-    3. Xlauncher SDK flow
+    3. Config SDK - Payment function
+
+    4. Xlauncher SDK flow
 
 
+1. Convert Unity to IOS game/application
 
-1. Setup Xlauncher SDK
+    Follow 1-iOS-sdk-export video guide in: https://drive.google.com/drive/u/0/folders/0B9DX-vYf8HJPT3pxMmNSS3g5UEU
+
+2. Setup Xlauncher SDK
 
         1.1. Import Xlauncher.framework into project
 
@@ -128,7 +133,7 @@ Steps to integrate SDK
         - showLoginScreen: Show the login screen, if user not logged in yet
         - showPaymentScreen: You may want to show payment screen from your game
 
-2. Implement payment extra data
+3. Implement payment extra data
 
     Payment extra data (PED) is the data you send to game server when user make payment success. For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
     
@@ -150,7 +155,7 @@ Steps to integrate SDK
           [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
 
     
-3. Flow
+4. Flow
 
 - Login flow : 
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/loginFlow.png)
