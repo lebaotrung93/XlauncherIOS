@@ -1,4 +1,4 @@
-# XlauncherIOS
+# XlauncherIOS For Unity
 Get Started
 
 Xlauncher SDK for iOS is the most simple way to intergrate user and payment to XCT system.Xlauncher SDK provide solution for payment such as: SMS, card, internet banking và Apple Payment.
