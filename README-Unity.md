@@ -24,13 +24,13 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 #### 2.1. Import Xlauncher.framework into project
 
-    - Drag and drop Xlauncher.framework into your project.
+   - Drag and drop Xlauncher.framework into your project.
 
-    - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
+   - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
 
-    - Embedded Binaries with SDK
+   - Embedded Binaries with SDK
 
-    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
+   ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
 #### 2.2. Add url schemes
 
@@ -44,7 +44,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
     - Add file XlauncherConfig.plist to your root project
 
 #### 2.3. Coding
-- Import SDK: #import <XLauncher/XLauncher.h> into AppDelegate.m
+- Import SDK: import XLauncher/XLauncher.h into AppDelegate.m
 - Add these lines of code in Application didFinishLaunchingWithOptions function in AppDelegate class, after window setup. You can get Google Signin client ID in the XlauncherConfig.plist.
 
 ```
@@ -116,17 +116,12 @@ Ex: ATButtonStickySideTop | ATButtonStickySideBottom
 * silentLogin: When open the app, maybe user is already logged in. Call this function to check if user is logged in or not, if not, you must call showLoginScreen function to show the login screen. 
 
 ```
-                if([[Xlauncher getInstance] silentLogin])
-                
-                    // Move direct to game
-                        
-                else {
-                
-                    // Show login screen
-                    
-                    [[Xlauncher getInstance] showLoginScreen];
-            
-                }
+if([[Xlauncher getInstance] silentLogin])
+	// Move direct to game
+else {
+	// Show login screen
+	[[Xlauncher getInstance] showLoginScreen];
+}
 ```
         
 * showButtonLauncherWithAnimation 
@@ -136,7 +131,8 @@ Ex: ATButtonStickySideTop | ATButtonStickySideBottom
 
 ### 3. Implement payment extra data
 
-Payment extra data (PED) is the data you send to game server when user make payment success. For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
+Payment extra data (PED) is the data you send to game server when user make payment success. 
+For example: if your game have multiple servers or multiple characters, you may want to send this data to game server, so its will know which character get the gold. The format is defined on your demand. 
     
 Note*: 
 * It must be unique string
