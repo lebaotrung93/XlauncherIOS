@@ -80,6 +80,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	}
 
 ```
+[Read here for more detail about how to setup the TEST enviroment] (https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
 
 - In the previous code, we provide two callback functions. There are handleLoginWithCompletion and handleLogoutWithCompletion. You may use these functions to call login or logout with your server
 
