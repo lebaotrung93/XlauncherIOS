@@ -107,7 +107,8 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 }
 ```
 
-- Public functions: here is the list of public functions you can call to customize the Xlauncher in your game: 
+#### 2.4. Public functions
+- Here is the list of public functions you can call to customize the Xlauncher in your game: 
 
 * setLauncherStickySide: You can specific the side that launcher can stick to via the or bitwise. 
 Ex: ATButtonStickySideTop | ATButtonStickySideBottom 
@@ -150,16 +151,16 @@ To implement PED, you create a class that implement PaymentExtraDataProtocol wit
 	return @“server12-id1001”; // ex: server 12, userid = 1001
 }
 ```
-    Then you create an PaymentExtraDataImp object and set it to XLauncher
+Then you create an PaymentExtraDataImp object and set it to XLauncher
 
 ```
-          [launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
+[launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
 ```
 
 ### 4. Flow
 
-- Login flow : 
+#### 4.1. Login flow: 
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/loginFlow.png)
 
-- Payment flow :
+#### 4.2. Payment flow:
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
