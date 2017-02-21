@@ -34,15 +34,15 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 #### 2.2. Add url schemes
 
-   - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id) from XlauncherConfig.plist file
+- Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id) from XlauncherConfig.plist file
     
-    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
 
-    - Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the XlauncherConfig.plist file
+- Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the XlauncherConfig.plist file
     
-    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
 
-    - Add file XlauncherConfig.plist to your root project
+- Add file XlauncherConfig.plist to your root project
 
 #### 2.3. Coding
 - Import SDK: import XLauncher/XLauncher.h into AppDelegate.m
