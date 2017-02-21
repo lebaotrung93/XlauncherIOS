@@ -16,7 +16,9 @@ Steps to integrate SDK
 
 1. Convert Unity to IOS game/application
 
-    Follow 1-iOS-sdk-export video guide in: https://drive.google.com/drive/u/0/folders/0B9DX-vYf8HJPT3pxMmNSS3g5UEU
+    Follow the video guide below
+    
+    [![How To Convert Unity to IOS game/application](http://img.youtube.com/vi/dZV1wjXS7QU/0.jpg)](http://www.youtube.com/watch?v=dZV1wjXS7QU "How To Convert Unity to IOS game/application")
 
 2. Setup Xlauncher SDK
 
