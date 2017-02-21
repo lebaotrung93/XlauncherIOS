@@ -1,9 +1,9 @@
 # XlauncherIOS For Unity
-Get Started
+## Get Started
 
 Xlauncher SDK for iOS is the most simple way to intergrate user and payment to XCT system.Xlauncher SDK provide solution for payment such as: SMS, card, internet banking và Apple Payment.
 
-Steps to integrate SDK
+## Steps to integrate SDK
 
     1. Convert Unity to IOS game/application.
 
@@ -14,15 +14,15 @@ Steps to integrate SDK
     4. Xlauncher SDK flow
 
 
-1. Convert Unity to IOS game/application
+### 1. Convert Unity to IOS game/application
 
-    Follow the video guide below
+   Follow the video guide below
     
-    [![How To Convert Unity to IOS game/application](http://img.youtube.com/vi/dZV1wjXS7QU/0.jpg)](http://www.youtube.com/watch?v=dZV1wjXS7QU "How To Convert Unity to IOS game/application")
+   [![How To Convert Unity to IOS game/application](http://img.youtube.com/vi/dZV1wjXS7QU/0.jpg)](http://www.youtube.com/watch?v=dZV1wjXS7QU "How To Convert Unity to IOS game/application")
 
-2. Setup Xlauncher SDK
+### 2. Setup Xlauncher SDK
 
-        1.1. Import Xlauncher.framework into project
+   #### 2.1. Import Xlauncher.framework into project
 
     - Drag and drop Xlauncher.framework into your project.
 
@@ -32,9 +32,9 @@ Steps to integrate SDK
 
     ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
-        1.2. Add url schemes
+#### 2.2. Add url schemes
 
-    - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id) from XlauncherConfig.plist file
+   - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id) from XlauncherConfig.plist file
     
     ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
 
@@ -43,14 +43,14 @@ Steps to integrate SDK
 
     - Add file XlauncherConfig.plist to your root project
 
+#### 2.3. Coding
 
-          1.3. Coding
+   - Import SDK : #import <XLauncher/XLauncher.h> into AppDelegate.m
+	
+	- Add these lines of code in Application didFinishLaunchingWithOptions function in AppDelegate class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
+	
 
-             - Import SDK : #import <XLauncher/XLauncher.h> into AppDelegate.m
-
-    - Add these lines of code in Application didFinishLaunchingWithOptions function in AppDelegate class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
-
-            (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+	(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
             // Project configure
     
