@@ -46,40 +46,38 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 #### 2.3. Coding
 - Import SDK: import XLauncher/XLauncher.h into AppDelegate.m
-- Add these lines of code in Application didFinishLaunchingWithOptions function in AppDelegate class, after window setup. You can get Google Signin client ID in the XlauncherConfig.plist.
 
+- Add these lines of code in Application StartUnity function in UnityAppController class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 ```
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-	// Project configure
+- (void)startUnity:(UIApplication*)application{
+    
+            // Project configure
+    
+            XLauncher *launcher = [XLauncher getInstance];
+    
+            [launcher setupWithWindow:self.window];
+            
+            // Handle login callback
 
-	XLauncher *launcher = [XLauncher getInstance];
-	[launcher setupWithWindow:self.window];
-	
-	// Handle login callback
-	[launcher handleLoginWithCompletion:^(NSDictionary *data) { 
-	
-		NSString *userID = data[kParamUserID];
+            [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
+
+    	        NSString *userID = data[kParamUserID];
 		NSString *userName = data[kParamUserName];
-		NSString *accessToken = data[kParamAccessToken]; 
-	
-	}]; 
+            	NSString *accessToken = data[kParamAccessToken]; 
 
-	// Handle logout callback
-	[launcher handleLogoutWithCompletion:^{ 
-		//do something
-	}];
-	
-	[launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
+            }]; 
+            
+            // Handle logout callback
 
-        NSDictionary *dict = @{kParamApplication: ATNonNilObject(application), kParamOptions: ATNonNilObject(launchOptions)}; 
+            [launcher handleLogoutWithCompletion:^{ 
+	    }];
+    
+            [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
 
-        ATDispatchEvent(Event_AppDidFinishLaunching, dict);    
-
-        return YES;
-	
-	}
-
+            return YES;
+ }
 ```
+
 [Read here for more detail about how to setup the TEST enviroment] (https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
 
 - In the previous code, we provide two callback functions. There are handleLoginWithCompletion and handleLogoutWithCompletion. You may use these functions to call login or logout with your server
