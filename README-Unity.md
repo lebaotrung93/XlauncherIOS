@@ -160,3 +160,7 @@ Then you create an PaymentExtraDataImp object and set it to XLauncher
 
 #### 4.2. Payment flow:
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
+
+### 5. Video Guide
+
+   [![Video Guide](http://img.youtube.com/vi/PfrMZtJtEsw/0.jpg)](http://www.youtube.com/watch?v=PfrMZtJtEsw "Video Guide")
