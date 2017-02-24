@@ -89,8 +89,10 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 ```
 
 - This example code is apply for landscape mode.You can set it through "didFinishLaunchingWithOptions"
+
 		[Xlauncher getInstance].isPotrait = YES (Potrait only);
-		Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function.
+		
+	Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function.
 	
 ```
 			- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
