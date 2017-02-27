@@ -140,18 +140,10 @@ Note*:
 * There's no special character in string
 
     
-To implement PED, you create a class that implement PaymentExtraDataProtocol with function
-```
-- (NSString *)getPaymentExtraData { 
+To set PED, you can call function
 
-	return @“server12-id1001”; // ex: server 12, userid = 1001
-}
-```
-Then you create an PaymentExtraDataImp object and set it to XLauncher
-
-```
-[launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
-```
+	void setGameOrder(char *gameOrder) {
+	}
 
 ### 4. Flow
 
