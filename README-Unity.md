@@ -66,7 +66,11 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
             }]; 
             
             // Handle logout callback
-
+		
+	    [launcher handlePaymentWithCompletion:^(NSDictionary *data){
+               //NSLog(@"Payment success! %@", data);
+            }];
+	    
             [launcher handleLogoutWithCompletion:^{ 
 	    }];
     
@@ -75,6 +79,14 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
             return YES;
  }
 ```
+
+- If you want to send back a value to unity game method, you can use function :
+//. GameObjectName1 : GameObject which will receive in Unity
+//. MethodName1 : method to get data.
+//. Param : value to transfer 	
+
+	UnitySendMessage("GameObjectName1", "MethodName1", [param UTF8String]);
+		
 
 [Read here for more detail about how to setup the TEST enviroment] (https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
 
