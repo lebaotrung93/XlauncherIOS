@@ -41,7 +41,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 - Add file XlauncherConfig.plist to your root project
 
 #### 2.3. Coding
-- Import SDK: import XLauncher/XLauncher.h into AppDelegate.m
+- Import SDK: import XLauncher/XLauncher.h into UnityAppController.m
 
 - Add these lines of code in Application StartUnity function in UnityAppController class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 ```
