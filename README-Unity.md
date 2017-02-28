@@ -22,11 +22,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 ### 2. Setup Xlauncher SDK
 
-#### 2.1. Import Xlauncher.framework into project
-
-   - Drag and drop Xlauncher.framework into your project.
-
-   - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
+#### 2.1. Embedded Xlauncher.framework into project
 
    - Embedded Binaries with SDK
 
