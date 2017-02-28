@@ -16,8 +16,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 ### 1. Convert Unity to IOS game/application
 
-   Import WrapperIOS class and Xlauncher Framework into plugin/IOS
-   
+   Import WrapperIOS class and Xlauncher Framework into plugin/IOS in Unity Projec
    Follow the video guide below
     
    [![How To Convert Unity to IOS game/application](http://img.youtube.com/vi/dZV1wjXS7QU/0.jpg)](http://www.youtube.com/watch?v=dZV1wjXS7QU "How To Convert Unity to IOS game/application")
