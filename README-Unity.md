@@ -16,17 +16,15 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 
 ### 1. Convert Unity to IOS game/application
 
-   Follow the video guide below
+   Import WrapperIOS class and Xlauncher Framework into plugin/IOS in Unity Project
+   
+   Follow the video guide below
     
    [![How To Convert Unity to IOS game/application](http://img.youtube.com/vi/dZV1wjXS7QU/0.jpg)](http://www.youtube.com/watch?v=dZV1wjXS7QU "How To Convert Unity to IOS game/application")
 
 ### 2. Setup Xlauncher SDK
 
-#### 2.1. Import Xlauncher.framework into project
-
-   - Drag and drop Xlauncher.framework into your project.
-
-   - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
+#### 2.1. Embedded Xlauncher.framework into project
 
    - Embedded Binaries with SDK
 
@@ -45,7 +43,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 - Add file XlauncherConfig.plist to your root project
 
 #### 2.3. Coding
-- Import SDK: import XLauncher/XLauncher.h into AppDelegate.m
+- Import SDK: import XLauncher/XLauncher.h into UnityAppController.m
 
 - Add these lines of code in Application StartUnity function in UnityAppController class, after window setup and before return line. You can get Google Signin client ID in the XlauncherConfig.plist. Handle callback : There are two callback functions you can handle including: login success and logout success. You may use these data to call login or logout to your server
 ```
@@ -68,7 +66,11 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
             }]; 
             
             // Handle logout callback
-
+		
+	    [launcher handlePaymentWithCompletion:^(NSDictionary *data){
+               //NSLog(@"Payment success! %@", data);
+            }];
+	    
             [launcher handleLogoutWithCompletion:^{ 
 	    }];
     
@@ -77,6 +79,18 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
             return YES;
  }
 ```
+
+- If you want to send back a value to unity game method, you can use function :
+
+GameObjectName1 : GameObject which will receive in Unity
+
+MethodName1 : method to get data.
+
+Param : value to transfer 	
+
+
+	UnitySendMessage("GameObjectName1", "MethodName1", [param UTF8String]);
+		
 
 [Read here for more detail about how to setup the TEST enviroment] (https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
 
@@ -140,18 +154,10 @@ Note*:
 * There's no special character in string
 
     
-To implement PED, you create a class that implement PaymentExtraDataProtocol with function
-```
-- (NSString *)getPaymentExtraData { 
+To set PED, you can call function
 
-	return @“server12-id1001”; // ex: server 12, userid = 1001
-}
-```
-Then you create an PaymentExtraDataImp object and set it to XLauncher
-
-```
-[launcher setPaymentExtraDataObject:[PaymentExtraDataImp new]];
-```
+	void setGameOrder(char *gameOrder) {
+	}
 
 ### 4. Flow
 

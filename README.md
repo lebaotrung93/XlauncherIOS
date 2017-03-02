@@ -57,6 +57,10 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	[launcher handleLogoutWithCompletion:^{ 
 		//do something
 	}];
+
+	[launcher handlePaymentWithCompletion:^(NSDictionary *data){
+        //NSLog(@"Payment success! %@", data);
+    	}];
 	
 	[launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
 
@@ -95,7 +99,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	Base on your game orientation, if your game support both portrait and landscape then you must replace UIInterfaceOrientationMaskLandscape with UIInterfaceOrientationMaskAll, if you game is only support portrait mode, then you don’t need to add this function.
 	
 ```
-			- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window
             { 
 
             if ([[XLauncher getInstance] isScreenRotateToPortrait]) { 
