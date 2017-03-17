@@ -50,29 +50,31 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 - (void)startUnity:(UIApplication*)application{
     
             // Project configure
-    
+        
             XLauncher *launcher = [XLauncher getInstance];
-    
-            [launcher setupWithWindow:self.window];
-            
-            // Handle login callback
-
-            [launcher handleLoginWithCompletion:^(NSDictionary *data) { 
-
-    	        NSString *userID = data[kParamUserID];
+	[launcher setupWithWindow:window usingFacebookSDK:YES]; // YES is using facebook 
+	//
+	// if using facebook API, you need to implement 
+	// [launcher setPermissionFacebook:@"public_profile"]; // string is the permission you want to 
+	//
+	// Handle login callback
+	[launcher handleLoginWithCompletion:^(NSDictionary *data) { 
+	
+		NSString *userID = data[kParamUserID];
 		NSString *userName = data[kParamUserName];
-            	NSString *accessToken = data[kParamAccessToken]; 
+		NSString *accessToken = data[kParamAccessToken]; 
+	
+	}]; 
 
-            }]; 
-            
-            // Handle logout callback
-		
-	    [launcher handlePaymentWithCompletion:^(NSDictionary *data){
-               //NSLog(@"Payment success! %@", data);
-            }];
+	// Handle logout callback
+	[launcher handleLogoutWithCompletion:^{ 
+		//do something
+	}];
+
+	[launcher handlePaymentWithCompletion:^(NSDictionary *data){
+        //NSLog(@"Payment success! %@", data);
+    	}];	
 	    
-            [launcher handleLogoutWithCompletion:^{ 
-	    }];
     
             [launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
 
