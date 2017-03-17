@@ -42,8 +42,11 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	// Project configure
 
 	XLauncher *launcher = [XLauncher getInstance];
-	[launcher setupWithWindow:self.window];
-	
+	[launcher setupWithWindow:window usingFacebookSDK:YES]; // YES is using facebook 
+	//
+	// if using facebook API, you need to implement 
+	// [launcher setPermissionFacebook:@"public_profile"]; // string is the permission you want to 
+	//
 	// Handle login callback
 	[launcher handleLoginWithCompletion:^(NSDictionary *data) { 
 	
