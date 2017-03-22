@@ -17,17 +17,17 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
    - Tick on checkbox: “Copy items into destination group's folder (if needed)”.
    - Embedded Binaries with SDK
 
-    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addEmbled.png)
 
 #### 1.2. Add url schemes
 
    - Add the following url schemes for Facebook(“fb” + facebook app id) and Google sign in (Reverse client id) from XlauncherConfig.plist file
     
-    ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbSchemes.png)
 
    - Add facebook app id, facebook display name and application queries scheme as below. Please replace app id and display name with the value in the XlauncherConfig.plist file 
    
-     ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/addFbId.png)
 
    - Add file XlauncherConfig.plist to your root project
 
@@ -75,7 +75,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	}
 
 ```
-[Read here for more detail about how to setup the TEST enviroment] (https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
+[Read here for more detail about how to setup the TEST enviroment](https://github.com/xctcorporation/ServerIntegration/blob/master/SetupTheEnviroment.md)
 
 - In the previous code, we provide two callback functions. There are handleLoginWithCompletion and handleLogoutWithCompletion. You may use these functions to call login or logout with your server
             
