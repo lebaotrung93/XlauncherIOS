@@ -12,7 +12,7 @@
 
           - (void)setPermissionFacebook:(NSString *)permission;
           // Example : [launcher setPermissionFacebook:@"public_profile"];
-- [For more permission you can read here] (https://developers.facebook.com/docs/facebook-login/permissions)
+[For more permission you can read here] (https://developers.facebook.com/docs/facebook-login/permissions)
 
 - Check if user is facebook user, open dialog if user is not login through facebook. Return a dictionary included user's infomation:
 
