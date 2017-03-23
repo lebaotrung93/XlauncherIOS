@@ -20,4 +20,4 @@
           
 - Check if user is facebook user, return nil if not login facebook, return a dictionary included user's infomation :
 
-          - (NSDictionary *)getFacebookInfo;
+          - (NSDictionary *)getFacebookInfo;
