@@ -144,6 +144,8 @@ else {
 * hideButtonLauncherWithAnimation
 * showLoginScreen: Show the login screen, if user not logged in yet
 * showPaymentScreen: You may want to show payment screen from your game
+* handleShowSDKCompletion: You can get the event show SDK here
+* handleCloseSDKCompletion: You can get the event show SDK here
 
 ### 3. Implement payment extra data
 
