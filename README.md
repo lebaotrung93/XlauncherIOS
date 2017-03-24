@@ -170,3 +170,11 @@ Then you create an PaymentExtraDataImp object and set it to XLauncher
 
 #### 4.2. Payment flow:
 ![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/PaymentFlow.png)
+
+### 5. Build note
+Please input full information in Xcode before build the product
+- Display Name: name appear on the device
+- Bundle identifier: bundle id of your game which provided by XCT
+- Version: string, for example: 1.0.0
+- Build: number, for example: 100
+![alt tag](https://github.com/xctcorporation/XlauncherIOS/blob/master/Images/ios_build.png)
