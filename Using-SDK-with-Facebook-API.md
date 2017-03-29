@@ -1,8 +1,6 @@
-[Read here for basic setup about how to setup the enviroment with Native]
-(https://github.com/xctcorporation/XlauncherIOS/blob/master/README.md)
+[Read here for basic setup about how to setup the enviroment with Native](https://github.com/xctcorporation/XlauncherIOS/blob/master/README.md)
 
-[Read here for basic setup about how to setup the enviroment with Unity]
-(https://github.com/xctcorporation/XlauncherIOS/blob/master/README-Unity.md)
+[Read here for basic setup about how to setup the enviroment with Unity](https://github.com/xctcorporation/XlauncherIOS/blob/master/README-Unity.md)
 
 - To use SDK with Facebook API, you have to set
           
@@ -12,7 +10,7 @@
 
           - (void)setPermissionFacebook:(NSString *)permission;
           // Example : [launcher setPermissionFacebook:@"public_profile"];
-- [For more permission you can read here] (https://developers.facebook.com/docs/facebook-login/permissions)
+[For more permission you can read here](https://developers.facebook.com/docs/facebook-login/permissions)
 
 - Check if user is facebook user, open dialog if user is not login through facebook. Return a dictionary included user's infomation:
 
