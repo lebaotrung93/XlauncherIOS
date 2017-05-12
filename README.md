@@ -62,7 +62,7 @@ Xlauncher SDK for iOS is the most simple way to intergrate user and payment to X
 	}];
 
 	// handle payment callback
-	[launcher handlePaymentWithCompletion:^(NSDictionary *data){
+	[launcher handlePaymentWithCompletion:^(NSString *data){
         	//NSLog(@"Payment success! %@", data);
     	}];	
 	[launcher setDomainDebug:NO]; // if you want to build in the TEST mode, pass it to TRUE
